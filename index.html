@@ -26,31 +26,8 @@
         100% { transform:translateY(105vh) rotate(540deg) scale(0.6); opacity:0; }
       }
       #particles-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
-
-      /* ══ HERO ══ */
-      .hero {
-        min-height:100vh; position:relative; display:flex; flex-direction:column;
-        align-items:center; justify-content:center; text-align:center;
-        padding:3rem 2rem 5rem; overflow:hidden; z-index:1;
-        background: radial-gradient(ellipse 80% 60% at 20% 10%,rgba(232,180,184,.28) 0%,transparent 60%),
-                    radial-gradient(ellipse 70% 50% at 80% 90%,rgba(201,150,42,.18) 0%,transparent 60%),
-                    radial-gradient(ellipse 90% 70% at 50% 50%,rgba(122,158,138,.10) 0%,transparent 70%),
-                    var(--cream);
-      }
-
-      /* ══ COUPLE PHOTO AS HERO BACKGROUND ══ */
-      .hero-bg-photo {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center top;
-        opacity: 0.13;
-        z-index: 0;
-        pointer-events: none;
-        /* IMAGE_URL_PLACEHOLDER */
-      }
-      .hero > *:not(.hero-bg-photo) { position: relative; z-index: 1; }
-
+      .hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3rem 2rem 5rem; overflow:hidden; z-index:1;
+        background: radial-gradient(ellipse 80% 60% at 20% 10%,rgba(232,180,184,.28) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 90%,rgba(201,150,42,.18) 0%,transparent 60%),radial-gradient(ellipse 90% 70% at 50% 50%,rgba(122,158,138,.10) 0%,transparent 70%),var(--cream); }
       .corner { position:absolute; width:180px; height:180px; opacity:0.18; pointer-events:none; }
       .corner svg { width:100%; height:100%; }
       .corner-tl { top:0; right:0; transform:scaleX(-1); }
@@ -146,6 +123,8 @@
       .msg-sig-line { width:40px; height:1px; background:var(--gold); opacity:.5; }
       .msg-sig-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1rem; color:var(--ink-soft); letter-spacing:.12em; }
       .msg-sig-icons { display:flex; gap:.6rem; font-size:1rem; opacity:.7; }
+
+      /* ══ CONGRATS SECTION ══ */
       .congrats-section { position:relative; z-index:1; padding:6rem 2rem; background:var(--parchment); text-align:center; }
       .congrats-form-wrap { max-width:700px; margin:0 auto; }
       .cf-card { background:var(--white); border-radius:8px; padding:3rem 2.5rem; box-shadow:0 4px 40px rgba(44,33,24,.07); border-top:3px solid var(--blush); margin-bottom:3rem; }
@@ -161,6 +140,8 @@
       .cf-submit { width:100%; padding:1.1rem 2rem; background:var(--ink); color:var(--gold-light); font-family:"Cinzel",serif; font-size:.75rem; letter-spacing:.25rem; text-transform:uppercase; border:none; border-radius:2px; cursor:pointer; transition:background .25s, box-shadow .25s; box-shadow:0 4px 20px rgba(44,33,24,.2); margin-top:1rem; }
       .cf-submit:hover { background:var(--blush-deep); box-shadow:0 6px 28px rgba(201,123,130,.4); }
       .cf-success { display:none; margin-top:1.2rem; padding:1rem 1.5rem; background:var(--blush-pale); border:1px solid var(--blush); border-radius:4px; font-family:"Great Vibes",cursive; font-size:1.8rem; color:var(--blush-deep); text-align:center; line-height:1.6; }
+
+      /* Messages Wall */
       .msgs-wall-title { display:flex; align-items:center; gap:1rem; margin-bottom:2rem; }
       .msgs-wall-title .line { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(201,150,42,.4)); }
       .msgs-wall-title .line.r { transform:scaleX(-1); }
@@ -176,13 +157,20 @@
       .msg-card-time { font-family:"Cinzel",serif; font-size:.58rem; letter-spacing:.2rem; color:var(--ink-soft); text-transform:uppercase; }
       .msg-card-text { font-family:"Cormorant Garamond",serif; font-size:1.05rem; line-height:1.9; color:var(--ink-soft); font-style:italic; }
       .no-msgs { font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--ink-soft); font-size:1.1rem; padding:2rem; text-align:center; background:var(--white); border-radius:6px; border:1px dashed rgba(201,150,42,.3); }
+
       footer { position:relative; z-index:1; background:var(--ink); color:rgba(255,255,255,.85); text-align:center; padding:4rem 2rem; overflow:hidden; }
       footer::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 100% at 50% 0%,rgba(232,180,184,.15) 0%,transparent 70%); pointer-events:none; }
       .footer-names { font-family:"Great Vibes",cursive; font-size:3.5rem; display:block; margin-bottom:.8rem; color:var(--gold-light); }
       .footer-date { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.15rem; letter-spacing:.15rem; color:rgba(255,255,255,.55); margin-bottom:.5rem; }
       .footer-divider { width:60px; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); margin:1.2rem auto; }
       .footer-dua { font-family:"Amiri",serif; font-size:1rem; color:rgba(255,255,255,.45); letter-spacing:.03rem; direction:rtl; }
-      @media(max-width:480px) { .cf-card{padding:2rem 1.3rem;} }
+      .couple-image-wrap { animation:fadeSlideUp 1.2s ease 1.3s both; margin-top:2.5rem; position:relative; width:fit-content; margin-left:auto; margin-right:auto; }
+      .couple-image-wrap::before { content:""; position:absolute; inset:-18px; border:1px solid rgba(201,150,42,.3); border-radius:50%; animation:rotateBorder 20s linear infinite; pointer-events:none; }
+      .couple-image-wrap::after { content:""; position:absolute; inset:-8px; border:1px solid rgba(232,180,184,.2); border-radius:50%; pointer-events:none; }
+      @keyframes rotateBorder { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+      .couple-image { width:220px; height:220px; border-radius:50%; object-fit:cover; object-position:center top; display:block; box-shadow:0 8px 40px rgba(201,150,42,.2),0 2px 12px rgba(44,33,24,.12); border:4px solid rgba(255,255,255,.9); filter:sepia(10%) contrast(1.05); transition:transform .4s,box-shadow .4s; }
+      .couple-image:hover { transform:scale(1.04); }
+      @media(max-width:480px) { .couple-image{width:170px;height:170px;} .couple-image-wrap::before{inset:-14px;} .cf-card{padding:2rem 1.3rem;} }
       @keyframes fadeSlideUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
       @keyframes popIn { from{opacity:0;transform:scale(.8)} to{opacity:1;transform:scale(1)} }
       .reveal { opacity:0; transform:translateY(28px); transition:opacity .8s ease,transform .8s ease; }
@@ -216,9 +204,6 @@
 
     <!-- ══ HERO ══ -->
     <section class="hero">
-      <!-- خلفية الصورة — ضعي رابط الصورة في JS أسفل الصفحة -->
-      <div class="hero-bg-photo" id="heroBgPhoto"></div>
-
       <div class="corner corner-tr"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-tl"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-bl"><svg><use href="#corner-svg"/></svg></div>
@@ -240,7 +225,8 @@
       </div>
       <div class="event-tags">
         <span class="tag tag-rose">💍 Engagement</span>
-        <span class="tag tag-gold">📜 Marriage Contract</span>
+        <span class="tag tag-gold">📜 Katb El-Kitab</span>
+        <span class="tag tag-sage">🌿 Night of a Lifetime</span>
       </div>
     </section>
 
@@ -307,6 +293,8 @@
       </div>
     </section>
 
+   
+
     <!-- ══ MESSAGE ══ -->
     <section class="msg-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
@@ -338,7 +326,9 @@
         <span class="sec-overline reveal">Congratulations</span>
         <h2 class="sec-title reveal">Leave a Message for the Couple</h2>
         <p class="sec-sub reveal">Your words are the most precious gift to Omar &amp; Mai 🌸</p>
+
         <div class="congrats-form-wrap">
+          <!-- Form Card -->
           <div class="cf-card reveal">
             <div class="cf-field">
               <label class="cf-label" for="cf-name">Your Name</label>
@@ -363,6 +353,8 @@
               Thank you! Your message reached Omar &amp; Mai 🌸
             </div>
           </div>
+
+          <!-- Messages Wall -->
           <div class="msgs-wall-title reveal">
             <div class="line"></div>
             <span>Messages of Love</span>
@@ -374,8 +366,8 @@
         </div>
       </div>
     </section>
-
-    <!-- ══ MAP ══ -->
+    
+ <!-- ══ MAP ══ -->
     <section class="map-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Location</span>
@@ -393,7 +385,7 @@
         </a>
       </div>
     </section>
-
+    
     <!-- ══ FOOTER ══ -->
     <footer>
       <span class="footer-names">Omar &amp; Mai</span>
@@ -403,18 +395,6 @@
     </footer>
 
     <script>
-      // ══════════════════════════════════════════════════
-      // ضعي رابط صورتك هنا 👇
-      // ══════════════════════════════════════════════════
-      const COUPLE_PHOTO_URL = "YOUR_IMAGE_URL_HERE";
-      // ══════════════════════════════════════════════════
-
-      // Set couple photo as hero background
-      if (COUPLE_PHOTO_URL && COUPLE_PHOTO_URL !== "YOUR_IMAGE_URL_HERE") {
-        const heroBg = document.getElementById("heroBgPhoto");
-        heroBg.style.backgroundImage = `url('${COUPLE_PHOTO_URL}')`;
-      }
-
       // ── FALLING STARS ──
       const canvas = document.getElementById("particles-canvas");
       const ctx = canvas.getContext("2d");
@@ -422,42 +402,67 @@
       function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
       resize(); window.addEventListener("resize", resize);
 
+      // Draw a 5-pointed star
       function drawStar(cx, cy, r, alpha, color) {
-        const spikes = 5, outerR = r, innerR = r * 0.42;
+        const spikes = 5;
+        const outerR = r;
+        const innerR = r * 0.42;
         let rot = (Math.PI / 2) * 3;
         const step = Math.PI / spikes;
         ctx.beginPath();
         for (let i = 0; i < spikes; i++) {
-          ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR); rot += step;
-          ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR); rot += step;
+          ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR);
+          rot += step;
+          ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR);
+          rot += step;
         }
         ctx.closePath();
         ctx.fillStyle = color.replace("ALPHA", alpha.toFixed(3));
         ctx.fill();
       }
 
-      const starColors = ["rgba(201,150,42,ALPHA)","rgba(232,201,122,ALPHA)","rgba(232,180,184,ALPHA)","rgba(201,123,130,ALPHA)","rgba(255,245,220,ALPHA)"];
+      const starColors = [
+        "rgba(201,150,42,ALPHA)",
+        "rgba(232,201,122,ALPHA)",
+        "rgba(232,180,184,ALPHA)",
+        "rgba(201,123,130,ALPHA)",
+        "rgba(255,245,220,ALPHA)",
+      ];
+
       const stars = [];
-      for (let i = 0; i < 48; i++) {
+      const STAR_COUNT = 48;
+      for (let i = 0; i < STAR_COUNT; i++) {
         stars.push({
-          x: Math.random() * window.innerWidth, y: Math.random() * window.innerHeight,
-          r: 1.2 + Math.random() * 3.2, vy: 0.18 + Math.random() * 0.38, vx: (Math.random() - 0.5) * 0.18,
-          alpha: 0.04 + Math.random() * 0.18, alphaMax: 0.06 + Math.random() * 0.16,
-          twinkleSpeed: 0.003 + Math.random() * 0.008, twinkleDir: Math.random() > 0.5 ? 1 : -1,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          r: 1.2 + Math.random() * 3.2,            // small radius
+          vy: 0.18 + Math.random() * 0.38,          // slow fall
+          vx: (Math.random() - 0.5) * 0.18,         // gentle drift
+          alpha: 0.04 + Math.random() * 0.18,        // very soft max alpha
+          alphaMax: 0.06 + Math.random() * 0.16,
+          twinkleSpeed: 0.003 + Math.random() * 0.008,
+          twinkleDir: Math.random() > 0.5 ? 1 : -1,
           color: starColors[Math.floor(Math.random() * starColors.length)],
-          rot: Math.random() * Math.PI * 2, rotSpeed: (Math.random() - 0.5) * 0.008,
+          rot: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.008,  // gentle rotation
         });
       }
+
       function animateStars() {
         ctx.clearRect(0, 0, W, H);
         stars.forEach(s => {
-          s.y += s.vy; s.x += s.vx; s.rot += s.rotSpeed;
+          s.y += s.vy;
+          s.x += s.vx;
+          s.rot += s.rotSpeed;
           s.alpha += s.twinkleSpeed * s.twinkleDir;
           if (s.alpha >= s.alphaMax || s.alpha <= 0.01) s.twinkleDir *= -1;
           if (s.y > H + 20) { s.y = -20; s.x = Math.random() * W; }
           if (s.x < -20) s.x = W + 20;
           if (s.x > W + 20) s.x = -20;
-          ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.rot);
+
+          ctx.save();
+          ctx.translate(s.x, s.y);
+          ctx.rotate(s.rot);
           drawStar(0, 0, s.r, s.alpha, s.color);
           ctx.restore();
         });
@@ -493,7 +498,9 @@
       const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);} }), {threshold:.1});
       document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 
-      // ══ CONGRATULATIONS — Google Sheets ══
+      // ══════════════════════════════
+      // CONGRATULATIONS — Google Sheets
+      // ══════════════════════════════
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHXmTFCsDLkEGqs2jNtFh4qFhsQxDIPhxn52GfMJ26uwjymDTuQ-e_cTIdet4ai1bt/exec";
       let selectedRel = "";
 
@@ -509,7 +516,9 @@
 
       function timeAgo(tsStr) {
         const diff = Date.now() - new Date(tsStr).getTime();
-        const m = Math.floor(diff / 60000), h = Math.floor(diff / 3600000), d = Math.floor(diff / 86400000);
+        const m = Math.floor(diff / 60000);
+        const h = Math.floor(diff / 3600000);
+        const d = Math.floor(diff / 86400000);
         if (isNaN(m) || m < 1) return "Just now";
         if (m < 60) return m + " min ago";
         if (h < 24) return h + " hr ago";
@@ -518,7 +527,10 @@
 
       function renderMsgs(msgs) {
         const list = document.getElementById("msgs-list");
-        if (!msgs || !msgs.length) { list.innerHTML = '<p class="no-msgs">Be the first to leave a message 🌸</p>'; return; }
+        if (!msgs || !msgs.length) {
+          list.innerHTML = '<p class="no-msgs">Be the first to leave a message 🌸</p>';
+          return;
+        }
         list.innerHTML = msgs.map((m, i) => `
           <div class="msg-card" style="animation-delay:${i * 0.07}s">
             <div class="msg-avatar">${escHtml(m.name).charAt(0).toUpperCase()}</div>
@@ -539,7 +551,10 @@
       function loadMsgs() {
         const list = document.getElementById("msgs-list");
         list.innerHTML = '<p class="no-msgs" style="opacity:.5">Loading messages...</p>';
-        fetch(SCRIPT_URL).then(r => r.json()).then(data => renderMsgs(data)).catch(() => renderMsgs([]));
+        fetch(SCRIPT_URL)
+          .then(r => r.json())
+          .then(data => renderMsgs(data))
+          .catch(() => renderMsgs([]));
       }
 
       function sendCongrats() {
@@ -547,23 +562,45 @@
         const msg  = document.getElementById("cf-msg").value.trim();
         if (!name) { document.getElementById("cf-name").focus(); return; }
         if (!msg)  { document.getElementById("cf-msg").focus(); return; }
+
         const btn = document.querySelector(".cf-submit");
-        btn.textContent = "Sending... 🌸"; btn.disabled = true;
-        fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"application/json"}, body:JSON.stringify({name, rel:selectedRel, msg}) })
+        btn.textContent = "Sending... 🌸";
+        btn.disabled = true;
+
+        fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, rel: selectedRel, msg })
+        })
         .then(() => {
+          // Reset form
           document.getElementById("cf-name").value = "";
           document.getElementById("cf-msg").value = "";
           selectedRel = "";
           document.querySelectorAll(".cf-rel-btn").forEach(b => b.classList.remove("active"));
-          btn.textContent = "Send Your Congratulations 💛"; btn.disabled = false;
+          btn.textContent = "Send Your Congratulations 💛";
+          btn.disabled = false;
+
+          // Show success
           const suc = document.getElementById("cf-success");
           suc.style.display = "block";
           setTimeout(() => suc.style.display = "none", 3500);
-          setTimeout(() => { loadMsgs(); document.getElementById("msgs-list").scrollIntoView({behavior:"smooth",block:"start"}); }, 1200);
+
+          // Reload messages after short delay
+          setTimeout(() => {
+            loadMsgs();
+            document.getElementById("msgs-list").scrollIntoView({behavior:"smooth", block:"start"});
+          }, 1200);
         })
-        .catch(() => { btn.textContent = "Send Your Congratulations 💛"; btn.disabled = false; alert("Something went wrong, please try again."); });
+        .catch(() => {
+          btn.textContent = "Send Your Congratulations 💛";
+          btn.disabled = false;
+          alert("Something went wrong, please try again.");
+        });
       }
 
+      // Load on start
       loadMsgs();
     </script>
   </body>
