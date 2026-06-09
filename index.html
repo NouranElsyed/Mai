@@ -28,7 +28,27 @@
       #particles-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
       .hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3rem 2rem 5rem; overflow:hidden; z-index:1;
         background: radial-gradient(ellipse 80% 60% at 20% 10%,rgba(232,180,184,.28) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 90%,rgba(201,150,42,.18) 0%,transparent 60%),radial-gradient(ellipse 90% 70% at 50% 50%,rgba(122,158,138,.10) 0%,transparent 70%),var(--cream); }
-      .corner { position:absolute; width:180px; height:180px; opacity:0.18; pointer-events:none; }
+      /* Couple SVG background watermark */
+      .hero-couple-bg {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .hero-couple-bg img {
+        width: min(420px, 70vw);
+        height: auto;
+        opacity: 0.06;
+        filter: sepia(1) saturate(0.5) hue-rotate(330deg);
+        user-select: none;
+      }
+      /* make sure hero content stays above the watermark */
+      .hero > *:not(.hero-couple-bg):not(.corner) { position: relative; z-index: 1; }
+      .corner { position:absolute; width:180px; height:180px; opacity:0.18; pointer-events:none; z-index:2; }
       .corner svg { width:100%; height:100%; }
       .corner-tl { top:0; right:0; transform:scaleX(-1); }
       .corner-tr { top:0; left:0; }
@@ -208,6 +228,12 @@
       <div class="corner corner-tl"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-bl"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-br"><svg><use href="#corner-svg"/></svg></div>
+
+      <!-- Couple silhouette watermark -->
+      <div class="hero-couple-bg">
+        <img src="Bride & Groom.svg" alt="" aria-hidden="true" />
+      </div>
+
       <p class="hero-label">Wedding Invitation</p>
       <div class="quranic reveal">
         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا<br/>
@@ -293,8 +319,6 @@
       </div>
     </section>
 
-   
-
     <!-- ══ MESSAGE ══ -->
     <section class="msg-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
@@ -367,7 +391,7 @@
       </div>
     </section>
     
- <!-- ══ MAP ══ -->
+    <!-- ══ MAP ══ -->
     <section class="map-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Location</span>
@@ -402,7 +426,6 @@
       function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
       resize(); window.addEventListener("resize", resize);
 
-      // Draw a 5-pointed star
       function drawStar(cx, cy, r, alpha, color) {
         const spikes = 5;
         const outerR = r;
@@ -435,16 +458,16 @@
         stars.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          r: 1.2 + Math.random() * 3.2,            // small radius
-          vy: 0.18 + Math.random() * 0.38,          // slow fall
-          vx: (Math.random() - 0.5) * 0.18,         // gentle drift
-          alpha: 0.04 + Math.random() * 0.18,        // very soft max alpha
+          r: 1.2 + Math.random() * 3.2,
+          vy: 0.18 + Math.random() * 0.38,
+          vx: (Math.random() - 0.5) * 0.18,
+          alpha: 0.04 + Math.random() * 0.18,
           alphaMax: 0.06 + Math.random() * 0.16,
           twinkleSpeed: 0.003 + Math.random() * 0.008,
           twinkleDir: Math.random() > 0.5 ? 1 : -1,
           color: starColors[Math.floor(Math.random() * starColors.length)],
           rot: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.008,  // gentle rotation
+          rotSpeed: (Math.random() - 0.5) * 0.008,
         });
       }
 
@@ -459,7 +482,6 @@
           if (s.y > H + 20) { s.y = -20; s.x = Math.random() * W; }
           if (s.x < -20) s.x = W + 20;
           if (s.x > W + 20) s.x = -20;
-
           ctx.save();
           ctx.translate(s.x, s.y);
           ctx.rotate(s.rot);
@@ -498,9 +520,7 @@
       const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);} }), {threshold:.1});
       document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
 
-      // ══════════════════════════════
-      // CONGRATULATIONS — Google Sheets
-      // ══════════════════════════════
+      // ══ CONGRATULATIONS — Google Sheets ══
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHXmTFCsDLkEGqs2jNtFh4qFhsQxDIPhxn52GfMJ26uwjymDTuQ-e_cTIdet4ai1bt/exec";
       let selectedRel = "";
 
@@ -574,20 +594,15 @@
           body: JSON.stringify({ name, rel: selectedRel, msg })
         })
         .then(() => {
-          // Reset form
           document.getElementById("cf-name").value = "";
           document.getElementById("cf-msg").value = "";
           selectedRel = "";
           document.querySelectorAll(".cf-rel-btn").forEach(b => b.classList.remove("active"));
           btn.textContent = "Send Your Congratulations 💛";
           btn.disabled = false;
-
-          // Show success
           const suc = document.getElementById("cf-success");
           suc.style.display = "block";
           setTimeout(() => suc.style.display = "none", 3500);
-
-          // Reload messages after short delay
           setTimeout(() => {
             loadMsgs();
             document.getElementById("msgs-list").scrollIntoView({behavior:"smooth", block:"start"});
@@ -600,7 +615,6 @@
         });
       }
 
-      // Load on start
       loadMsgs();
     </script>
   </body>
