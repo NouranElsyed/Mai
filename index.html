@@ -28,25 +28,8 @@
       #particles-canvas { position:fixed; inset:0; z-index:0; pointer-events:none; }
       .hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3rem 2rem 5rem; overflow:hidden; z-index:1;
         background: radial-gradient(ellipse 80% 60% at 20% 10%,rgba(232,180,184,.28) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 90%,rgba(201,150,42,.18) 0%,transparent 60%),radial-gradient(ellipse 90% 70% at 50% 50%,rgba(122,158,138,.10) 0%,transparent 70%),var(--cream); }
-      /* Couple SVG background watermark */
-      .hero-couple-bg {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: none;
-        z-index: 0;
-        overflow: hidden;
-      }
-      .hero-couple-bg img {
-        width: min(420px, 70vw);
-        height: auto;
-        opacity: 0.06;
-        filter: sepia(1) saturate(0.5) hue-rotate(330deg);
-        user-select: none;
-      }
-      /* make sure hero content stays above the watermark */
+      .hero-couple-bg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 0; overflow: hidden; }
+      .hero-couple-bg img { width: min(420px, 70vw); height: auto; opacity: 0.06; filter: sepia(1) saturate(0.5) hue-rotate(330deg); user-select: none; }
       .hero > *:not(.hero-couple-bg):not(.corner) { position: relative; z-index: 1; }
       .corner { position:absolute; width:180px; height:180px; opacity:0.18; pointer-events:none; z-index:2; }
       .corner svg { width:100%; height:100%; }
@@ -143,8 +126,6 @@
       .msg-sig-line { width:40px; height:1px; background:var(--gold); opacity:.5; }
       .msg-sig-text { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1rem; color:var(--ink-soft); letter-spacing:.12em; }
       .msg-sig-icons { display:flex; gap:.6rem; font-size:1rem; opacity:.7; }
-
-      /* ══ CONGRATS SECTION ══ */
       .congrats-section { position:relative; z-index:1; padding:6rem 2rem; background:var(--parchment); text-align:center; }
       .congrats-form-wrap { max-width:700px; margin:0 auto; }
       .cf-card { background:var(--white); border-radius:8px; padding:3rem 2.5rem; box-shadow:0 4px 40px rgba(44,33,24,.07); border-top:3px solid var(--blush); margin-bottom:3rem; }
@@ -160,8 +141,6 @@
       .cf-submit { width:100%; padding:1.1rem 2rem; background:var(--ink); color:var(--gold-light); font-family:"Cinzel",serif; font-size:.75rem; letter-spacing:.25rem; text-transform:uppercase; border:none; border-radius:2px; cursor:pointer; transition:background .25s, box-shadow .25s; box-shadow:0 4px 20px rgba(44,33,24,.2); margin-top:1rem; }
       .cf-submit:hover { background:var(--blush-deep); box-shadow:0 6px 28px rgba(201,123,130,.4); }
       .cf-success { display:none; margin-top:1.2rem; padding:1rem 1.5rem; background:var(--blush-pale); border:1px solid var(--blush); border-radius:4px; font-family:"Great Vibes",cursive; font-size:1.8rem; color:var(--blush-deep); text-align:center; line-height:1.6; }
-
-      /* Messages Wall */
       .msgs-wall-title { display:flex; align-items:center; gap:1rem; margin-bottom:2rem; }
       .msgs-wall-title .line { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(201,150,42,.4)); }
       .msgs-wall-title .line.r { transform:scaleX(-1); }
@@ -177,7 +156,6 @@
       .msg-card-time { font-family:"Cinzel",serif; font-size:.58rem; letter-spacing:.2rem; color:var(--ink-soft); text-transform:uppercase; }
       .msg-card-text { font-family:"Cormorant Garamond",serif; font-size:1.05rem; line-height:1.9; color:var(--ink-soft); font-style:italic; }
       .no-msgs { font-family:"Cormorant Garamond",serif; font-style:italic; color:var(--ink-soft); font-size:1.1rem; padding:2rem; text-align:center; background:var(--white); border-radius:6px; border:1px dashed rgba(201,150,42,.3); }
-
       footer { position:relative; z-index:1; background:var(--ink); color:rgba(255,255,255,.85); text-align:center; padding:4rem 2rem; overflow:hidden; }
       footer::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse 80% 100% at 50% 0%,rgba(232,180,184,.15) 0%,transparent 70%); pointer-events:none; }
       .footer-names { font-family:"Great Vibes",cursive; font-size:3.5rem; display:block; margin-bottom:.8rem; color:var(--gold-light); }
@@ -222,18 +200,13 @@
       </symbol>
     </svg>
 
-    <!-- ══ HERO ══ -->
+    <!-- HERO -->
     <section class="hero">
       <div class="corner corner-tr"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-tl"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-bl"><svg><use href="#corner-svg"/></svg></div>
       <div class="corner corner-br"><svg><use href="#corner-svg"/></svg></div>
-
-      <!-- Couple silhouette watermark -->
-      <div class="hero-couple-bg">
-        <img src="Bride & Groom.svg" alt="" aria-hidden="true" />
-      </div>
-
+      <div class="hero-couple-bg"><img src="Bride & Groom.svg" alt="" aria-hidden="true" /></div>
       <p class="hero-label">Wedding Invitation</p>
       <div class="quranic reveal">
         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا<br/>
@@ -256,7 +229,7 @@
       </div>
     </section>
 
-    <!-- ══ COUNTDOWN ══ -->
+    <!-- COUNTDOWN -->
     <section id="cd-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Countdown</span>
@@ -274,7 +247,7 @@
       </div>
     </section>
 
-    <!-- ══ ORDER OF EVENTS ══ -->
+    <!-- ORDER OF EVENTS -->
     <section class="events-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Program</span>
@@ -305,7 +278,7 @@
       </div>
     </section>
 
-    <!-- ══ DETAILS ══ -->
+    <!-- DETAILS -->
     <section class="details-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Event Details</span>
@@ -319,7 +292,7 @@
       </div>
     </section>
 
-    <!-- ══ MESSAGE ══ -->
+    <!-- MESSAGE -->
     <section class="msg-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">A Message from the Heart</span>
@@ -344,15 +317,13 @@
       </div>
     </section>
 
-    <!-- ══ CONGRATULATIONS FORM ══ -->
+    <!-- CONGRATULATIONS FORM -->
     <section class="congrats-section">
       <div class="section" style="padding-top:0;padding-bottom:0">
         <span class="sec-overline reveal">Congratulations</span>
         <h2 class="sec-title reveal">Leave a Message for the Couple</h2>
         <p class="sec-sub reveal">Your words are the most precious gift to Omar &amp; Mai 🌸</p>
-
         <div class="congrats-form-wrap">
-          <!-- Form Card -->
           <div class="cf-card reveal">
             <div class="cf-field">
               <label class="cf-label" for="cf-name">Your Name</label>
@@ -373,16 +344,10 @@
               <textarea class="cf-textarea" id="cf-msg" placeholder="Write your heartfelt congratulations to the most beautiful couple..."></textarea>
             </div>
             <button class="cf-submit" onclick="sendCongrats()">Send Your Congratulations 💛</button>
-            <div class="cf-success" id="cf-success">
-              Thank you! Your message reached Omar &amp; Mai 🌸
-            </div>
+            <div class="cf-success" id="cf-success">Thank you! Your message reached Omar &amp; Mai 🌸</div>
           </div>
-
-          <!-- Messages Wall -->
           <div class="msgs-wall-title reveal">
-            <div class="line"></div>
-            <span>Messages of Love</span>
-            <div class="line r"></div>
+            <div class="line"></div><span>Messages of Love</span><div class="line r"></div>
           </div>
           <div class="msgs-list reveal" id="msgs-list">
             <p class="no-msgs" id="no-msgs">Be the first to leave a message 🌸</p>
@@ -390,33 +355,33 @@
         </div>
       </div>
     </section>
-    
-<!-- ══ MAP ══ -->
-<section class="map-section">
-  <div class="section" style="padding-top:0;padding-bottom:0">
-    <span class="sec-overline reveal">Location</span>
-    <h2 class="sec-title reveal">Where is the Celebration?</h2>
-    <p class="sec-sub reveal">Tap the map to get directions easily</p>
-    <div class="map-wrap reveal">
-      <iframe
-        class="map-iframe"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3412.5!2d29.9469!3d31.2155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5c49b3b3b3b3b%3A0x0!2zT3JvdWJhIFNreWxpbmUsIFNtb3VoYSwgQWxleGFuZHJpYQ!5e0!3m2!1sar!2seg!4v1"
-        allowfullscreen
-        loading="lazy"
-        title="Venue Location"
-      ></iframe>
-    </div>
-    <div class="addr-box reveal">
-      <div class="addr-bar"></div>
-      <p class="addr-text"><strong>Entrance to Smouha Agricultural Road</strong><br/>Next to the New Ettihad Club<br/>Sky Line Al-Orouba Project — Alexandria</p>
-    </div>
-    <a href="https://share.google/9iUHmpLy7uP547USK" target="_blank" class="maps-btn">
-      <span>🗺️</span> Open in Google Maps
-    </a>
-  </div>
-</section>
-    
-    <!-- ══ FOOTER ══ -->
+
+    <!-- MAP -->
+    <section class="map-section">
+      <div class="section" style="padding-top:0;padding-bottom:0">
+        <span class="sec-overline reveal">Location</span>
+        <h2 class="sec-title reveal">Where is the Celebration?</h2>
+        <p class="sec-sub reveal">Tap the map to get directions easily</p>
+        <div class="map-wrap reveal">
+          <iframe
+            class="map-iframe"
+            src="https://maps.google.com/maps?q=31.2028759,29.9723228&z=17&output=embed&hl=ar"
+            allowfullscreen
+            loading="lazy"
+            title="Venue Location">
+          </iframe>
+        </div>
+        <div class="addr-box reveal">
+          <div class="addr-bar"></div>
+          <p class="addr-text"><strong>Entrance to Smouha Agricultural Road</strong><br/>Next to the New Ettihad Club<br/>Sky Line Al-Orouba Project — Alexandria</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=31.2028759,29.9723228" target="_blank" class="maps-btn">
+          <span>🗺️</span> Open in Google Maps
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
       <span class="footer-names">Omar &amp; Mai</span>
       <div class="footer-divider"></div>
@@ -425,80 +390,43 @@
     </footer>
 
     <script>
-      // ── FALLING STARS ──
       const canvas = document.getElementById("particles-canvas");
       const ctx = canvas.getContext("2d");
       let W, H;
       function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
       resize(); window.addEventListener("resize", resize);
-
       function drawStar(cx, cy, r, alpha, color) {
-        const spikes = 5;
-        const outerR = r;
-        const innerR = r * 0.42;
+        const spikes = 5, outerR = r, innerR = r * 0.42;
         let rot = (Math.PI / 2) * 3;
         const step = Math.PI / spikes;
         ctx.beginPath();
         for (let i = 0; i < spikes; i++) {
-          ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR);
-          rot += step;
-          ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR);
-          rot += step;
+          ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR); rot += step;
+          ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR); rot += step;
         }
         ctx.closePath();
         ctx.fillStyle = color.replace("ALPHA", alpha.toFixed(3));
         ctx.fill();
       }
-
-      const starColors = [
-        "rgba(201,150,42,ALPHA)",
-        "rgba(232,201,122,ALPHA)",
-        "rgba(232,180,184,ALPHA)",
-        "rgba(201,123,130,ALPHA)",
-        "rgba(255,245,220,ALPHA)",
-      ];
-
+      const starColors = ["rgba(201,150,42,ALPHA)","rgba(232,201,122,ALPHA)","rgba(232,180,184,ALPHA)","rgba(201,123,130,ALPHA)","rgba(255,245,220,ALPHA)"];
       const stars = [];
-      const STAR_COUNT = 48;
-      for (let i = 0; i < STAR_COUNT; i++) {
-        stars.push({
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          r: 1.2 + Math.random() * 3.2,
-          vy: 0.18 + Math.random() * 0.38,
-          vx: (Math.random() - 0.5) * 0.18,
-          alpha: 0.04 + Math.random() * 0.18,
-          alphaMax: 0.06 + Math.random() * 0.16,
-          twinkleSpeed: 0.003 + Math.random() * 0.008,
-          twinkleDir: Math.random() > 0.5 ? 1 : -1,
-          color: starColors[Math.floor(Math.random() * starColors.length)],
-          rot: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.008,
-        });
+      for (let i = 0; i < 48; i++) {
+        stars.push({ x:Math.random()*window.innerWidth, y:Math.random()*window.innerHeight, r:1.2+Math.random()*3.2, vy:0.18+Math.random()*0.38, vx:(Math.random()-0.5)*0.18, alpha:0.04+Math.random()*0.18, alphaMax:0.06+Math.random()*0.16, twinkleSpeed:0.003+Math.random()*0.008, twinkleDir:Math.random()>.5?1:-1, color:starColors[Math.floor(Math.random()*starColors.length)], rot:Math.random()*Math.PI*2, rotSpeed:(Math.random()-0.5)*0.008 });
       }
-
       function animateStars() {
-        ctx.clearRect(0, 0, W, H);
+        ctx.clearRect(0,0,W,H);
         stars.forEach(s => {
-          s.y += s.vy;
-          s.x += s.vx;
-          s.rot += s.rotSpeed;
-          s.alpha += s.twinkleSpeed * s.twinkleDir;
-          if (s.alpha >= s.alphaMax || s.alpha <= 0.01) s.twinkleDir *= -1;
-          if (s.y > H + 20) { s.y = -20; s.x = Math.random() * W; }
-          if (s.x < -20) s.x = W + 20;
-          if (s.x > W + 20) s.x = -20;
-          ctx.save();
-          ctx.translate(s.x, s.y);
-          ctx.rotate(s.rot);
-          drawStar(0, 0, s.r, s.alpha, s.color);
-          ctx.restore();
+          s.y+=s.vy; s.x+=s.vx; s.rot+=s.rotSpeed;
+          s.alpha+=s.twinkleSpeed*s.twinkleDir;
+          if(s.alpha>=s.alphaMax||s.alpha<=0.01) s.twinkleDir*=-1;
+          if(s.y>H+20){s.y=-20;s.x=Math.random()*W;}
+          if(s.x<-20)s.x=W+20; if(s.x>W+20)s.x=-20;
+          ctx.save(); ctx.translate(s.x,s.y); ctx.rotate(s.rot);
+          drawStar(0,0,s.r,s.alpha,s.color); ctx.restore();
         });
         requestAnimationFrame(animateStars);
       }
       animateStars();
-
-      // ── PETALS ──
       const petalColors = ["#e8b4b8","#c9962a","#7a9e8a","#f2d4a7","#dcc5d0","#e8cfa0","#b8d4c6","#f0c8cc"];
       const petalContainer = document.getElementById("petals");
       for (let i = 0; i < 32; i++) {
@@ -508,8 +436,6 @@
         p.style.cssText = `left:${Math.random()*105}%;background:${petalColors[i%petalColors.length]};width:${size}px;height:${size*(.6+Math.random()*.8)}px;border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};animation-duration:${9+Math.random()*14}s;animation-delay:${-Math.random()*18}s;`;
         petalContainer.appendChild(p);
       }
-
-      // ── COUNTDOWN ──
       const target = new Date("2026-06-11T19:00:00").getTime();
       function tick() {
         const diff = target - Date.now();
@@ -520,107 +446,45 @@
         document.getElementById("cd-m").textContent = pad(Math.floor((diff%3600000)/60000));
         document.getElementById("cd-s").textContent = pad(Math.floor((diff%60000)/1000));
       }
-      tick(); setInterval(tick, 1000);
-
-      // ── SCROLL REVEAL ──
-      const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);} }), {threshold:.1});
+      tick(); setInterval(tick,1000);
+      const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);} }),{threshold:.1});
       document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
-
-      // ══ CONGRATULATIONS — Google Sheets ══
       const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHXmTFCsDLkEGqs2jNtFh4qFhsQxDIPhxn52GfMJ26uwjymDTuQ-e_cTIdet4ai1bt/exec";
       let selectedRel = "";
-
       function pickRel(btn, val) {
         selectedRel = val;
         document.querySelectorAll(".cf-rel-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
       }
-
-      function escHtml(str) {
-        return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-      }
-
+      function escHtml(str) { return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
       function timeAgo(tsStr) {
         const diff = Date.now() - new Date(tsStr).getTime();
-        const m = Math.floor(diff / 60000);
-        const h = Math.floor(diff / 3600000);
-        const d = Math.floor(diff / 86400000);
-        if (isNaN(m) || m < 1) return "Just now";
-        if (m < 60) return m + " min ago";
-        if (h < 24) return h + " hr ago";
-        return d + " day" + (d > 1 ? "s" : "") + " ago";
+        const m=Math.floor(diff/60000), h=Math.floor(diff/3600000), d=Math.floor(diff/86400000);
+        if(isNaN(m)||m<1)return"Just now"; if(m<60)return m+" min ago"; if(h<24)return h+" hr ago"; return d+" day"+(d>1?"s":"")+" ago";
       }
-
       function renderMsgs(msgs) {
         const list = document.getElementById("msgs-list");
-        if (!msgs || !msgs.length) {
-          list.innerHTML = '<p class="no-msgs">Be the first to leave a message 🌸</p>';
-          return;
-        }
-        list.innerHTML = msgs.map((m, i) => `
-          <div class="msg-card" style="animation-delay:${i * 0.07}s">
-            <div class="msg-avatar">${escHtml(m.name).charAt(0).toUpperCase()}</div>
-            <div class="msg-card-inner">
-              <div class="msg-card-header">
-                <div>
-                  <span class="msg-card-name">${escHtml(m.name)}</span>
-                  ${m.rel ? `<span class="msg-card-rel"> · ${escHtml(m.rel)}</span>` : ""}
-                </div>
-                <span class="msg-card-time">${timeAgo(m.ts)}</span>
-              </div>
-              <p class="msg-card-text">"${escHtml(m.msg)}"</p>
-            </div>
-          </div>
-        `).join("");
+        if (!msgs||!msgs.length) { list.innerHTML='<p class="no-msgs">Be the first to leave a message 🌸</p>'; return; }
+        list.innerHTML = msgs.map((m,i)=>`<div class="msg-card" style="animation-delay:${i*.07}s"><div class="msg-avatar">${escHtml(m.name).charAt(0).toUpperCase()}</div><div class="msg-card-inner"><div class="msg-card-header"><div><span class="msg-card-name">${escHtml(m.name)}</span>${m.rel?`<span class="msg-card-rel"> · ${escHtml(m.rel)}</span>`:""}</div><span class="msg-card-time">${timeAgo(m.ts)}</span></div><p class="msg-card-text">"${escHtml(m.msg)}"</p></div></div>`).join("");
       }
-
       function loadMsgs() {
-        const list = document.getElementById("msgs-list");
-        list.innerHTML = '<p class="no-msgs" style="opacity:.5">Loading messages...</p>';
-        fetch(SCRIPT_URL)
-          .then(r => r.json())
-          .then(data => renderMsgs(data))
-          .catch(() => renderMsgs([]));
+        document.getElementById("msgs-list").innerHTML='<p class="no-msgs" style="opacity:.5">Loading messages...</p>';
+        fetch(SCRIPT_URL).then(r=>r.json()).then(data=>renderMsgs(data)).catch(()=>renderMsgs([]));
       }
-
       function sendCongrats() {
-        const name = document.getElementById("cf-name").value.trim();
-        const msg  = document.getElementById("cf-msg").value.trim();
-        if (!name) { document.getElementById("cf-name").focus(); return; }
-        if (!msg)  { document.getElementById("cf-msg").focus(); return; }
-
-        const btn = document.querySelector(".cf-submit");
-        btn.textContent = "Sending... 🌸";
-        btn.disabled = true;
-
-        fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, rel: selectedRel, msg })
-        })
-        .then(() => {
-          document.getElementById("cf-name").value = "";
-          document.getElementById("cf-msg").value = "";
-          selectedRel = "";
-          document.querySelectorAll(".cf-rel-btn").forEach(b => b.classList.remove("active"));
-          btn.textContent = "Send Your Congratulations 💛";
-          btn.disabled = false;
-          const suc = document.getElementById("cf-success");
-          suc.style.display = "block";
-          setTimeout(() => suc.style.display = "none", 3500);
-          setTimeout(() => {
-            loadMsgs();
-            document.getElementById("msgs-list").scrollIntoView({behavior:"smooth", block:"start"});
-          }, 1200);
-        })
-        .catch(() => {
-          btn.textContent = "Send Your Congratulations 💛";
-          btn.disabled = false;
-          alert("Something went wrong, please try again.");
-        });
+        const name=document.getElementById("cf-name").value.trim(), msg=document.getElementById("cf-msg").value.trim();
+        if(!name){document.getElementById("cf-name").focus();return;} if(!msg){document.getElementById("cf-msg").focus();return;}
+        const btn=document.querySelector(".cf-submit"); btn.textContent="Sending... 🌸"; btn.disabled=true;
+        fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,rel:selectedRel,msg})})
+        .then(()=>{
+          document.getElementById("cf-name").value=""; document.getElementById("cf-msg").value="";
+          selectedRel=""; document.querySelectorAll(".cf-rel-btn").forEach(b=>b.classList.remove("active"));
+          btn.textContent="Send Your Congratulations 💛"; btn.disabled=false;
+          const suc=document.getElementById("cf-success"); suc.style.display="block";
+          setTimeout(()=>suc.style.display="none",3500);
+          setTimeout(()=>{loadMsgs();document.getElementById("msgs-list").scrollIntoView({behavior:"smooth",block:"start"});},1200);
+        }).catch(()=>{btn.textContent="Send Your Congratulations 💛";btn.disabled=false;alert("Something went wrong, please try again.");});
       }
-
       loadMsgs();
     </script>
   </body>
